@@ -1,4 +1,8 @@
 {
   "name": "django-shopfront",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cp frontend/public/index.html backend/static",
+    "postinstall": "yarn run build"
+  }
 }
