@@ -21,5 +21,6 @@ from django.views.static import serve
 
 urlpatterns = [
     url('^(?:index\.html)?$', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
+    url('^(?P<path>(js|css|img)/.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
