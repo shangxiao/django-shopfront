@@ -4,8 +4,5 @@ machine:
 dependencies:
   override:
     - yarn
-test:
-  override:
-    - backend/manage.py test:
-        environment:
-          DJANGO_SECRET_KEY: test
+    - pip install tox tox-pyenv
+    - pyenv local 3.6.1
