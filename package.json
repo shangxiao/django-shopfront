@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "rm -rf frontend/dist/*",
     "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack --output-filename=frontend/dist/js/main.js",
-    "postinstall": "yarn run build",
+    "heroku-postbuild": "yarn run build",
     "lint": "eslint frontend/src"
   },
   "dependencies": {
