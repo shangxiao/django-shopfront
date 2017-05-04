@@ -6,3 +6,7 @@ dependencies:
     - yarn
     - pip install tox tox-pyenv
     - pyenv local 3.6.1
+test:
+  override:
+    - tox
+    - yarn run lint
