@@ -20,7 +20,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    modules: [baseDir + 'src', 'node_modules'],
   },
   devServer: {
     contentBase: baseDir + 'dist',
