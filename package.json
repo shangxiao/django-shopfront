@@ -2,14 +2,16 @@
   "name": "django-shopfront",
   "version": "1.0.0",
   "scripts": {
+    "start": "webpack-dev-server",
     "clean": "rm -rf frontend/dist/*",
-    "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack --output-filename=frontend/dist/js/main.js",
+    "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack",
     "heroku-postbuild": "yarn run build",
     "lint": "eslint frontend/src"
   },
   "dependencies": {
     "react": "15.5.4",
-    "react-dom": "15.5.4"
+    "react-dom": "15.5.4",
+    "react-hot-loader": "next"
   },
   "devDependencies": {
     "babel-core": "6.24.1",
@@ -21,6 +23,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
-    "webpack": "2.4.1"
+    "webpack": "2.4.1",
+    "webpack-dev-server": "2.4.5"
   }
 }

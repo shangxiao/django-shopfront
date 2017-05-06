@@ -1,8 +1,31 @@
+const webpack = require('webpack');
+
+const baseDir = __dirname + '/frontend/';
+
 module.exports = {
-  entry: './frontend/src/main.jsx',
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    baseDir + 'src/main.jsx',
+  ],
+  output: {
+    filename: 'main.js',
+    path: baseDir + 'dist/js',
+    publicPath: '/js/'
+  },
   module: {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
-    ]
+    ],
   },
+  devServer: {
+    contentBase: baseDir + 'dist',
+    hot: true,
+    publicPath: '/js/',
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+  ],
 };
