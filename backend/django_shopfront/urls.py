@@ -14,13 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.static import serve
+from rest_framework.routers import DefaultRouter
+
+from shop.views import OrderViewSet, ProductViewSet
+
+router = DefaultRouter()
+router.register(r'products', ProductViewSet)
+router.register(r'orders', OrderViewSet)
 
 urlpatterns = [
     url('^(?:index\.html)?$', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
     url('^(?P<path>(js|css|img)/.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls, namespace='api')),
 ]
