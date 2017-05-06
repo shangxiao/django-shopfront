@@ -6,6 +6,7 @@
     "clean": "rm -rf frontend/dist/*",
     "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack",
     "heroku-postbuild": "yarn run build",
+    "test": "NODE_ENV=testing NODE_PATH=frontend/src mocha --require babel-register frontend/test/.setup.js frontend/test/**/*-test.js",
     "lint": "eslint frontend/src"
   },
   "dependencies": {
@@ -18,11 +19,18 @@
     "babel-loader": "7.0.0",
     "babel-preset-env": "1.4.0",
     "babel-preset-react": "6.24.1",
+    "babel-register": "6.24.1",
+    "chai": "3.5.0",
+    "enzyme": "2.8.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-react": "6.10.3",
+    "jsdom": "9.12.0",
+    "mocha": "3.3.0",
+    "react-addons-test-utils": "15.5.1",
+    "sinon": "2.2.0",
     "webpack": "2.4.1",
     "webpack-dev-server": "2.4.5"
   }

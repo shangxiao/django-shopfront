@@ -9,4 +9,5 @@ dependencies:
 test:
   override:
     - tox
-    - yarn run lint
+    - yarn lint
+    - yarn test
