@@ -24,7 +24,7 @@ from shop.views import OrderViewSet, ProductViewSet
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
-router.register(r'orders', OrderViewSet)
+router.register(r'orders', OrderViewSet, base_name='order')
 
 urlpatterns = [
     url('^(?:index\.html)?$', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
