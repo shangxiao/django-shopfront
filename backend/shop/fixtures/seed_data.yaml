@@ -1,0 +1,435 @@
+- model: shop.Product
+  pk: 1
+  fields:
+    name: MOLTE
+    description: desk chair
+    image_url: http://www.ikea.com/PIAimages/0327356_PE519798_S3.JPG
+    price: 19.99
+- model: shop.Product
+  pk: 2
+  fields:
+    name: SNILLE
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0287229_PE423571_S3.JPG
+    price: 27.99
+- model: shop.Product
+  pk: 3
+  fields:
+    name: ALRIK
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0133276_PE288666_S3.JPG
+    price: 34.99
+- model: shop.Product
+  pk: 4
+  fields:
+    name: SKÅLBERG / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0309019_PE428447_S3.JPG
+    price: 39.99
+- model: shop.Product
+  pk: 5
+  fields:
+    name: NILSERIK
+    description: standing support
+    image_url: http://www.ikea.com/PIAimages/0324793_PE518143_S3.JPG
+    price: 49.99
+- model: shop.Product
+  pk: 6
+  fields:
+    name: VÅGSBERG / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0301538_PE426752_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 7
+  fields:
+    name: ÖRFJÄLL
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0470725_PE612903_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 8
+  fields:
+    name: JULES
+    description: junior desk chair
+    image_url: http://www.ikea.com/PIAimages/0490039_PE624232_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 9
+  fields:
+    name: ÖRFJÄLL / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0397750_PE585276_S3.JPG
+    price: 79
+- model: shop.Product
+  pk: 10
+  fields:
+    name: LILLHÖJDEN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0418127_PE575228_S3.JPG
+    price: 89
+- model: shop.Product
+  pk: 11
+  fields:
+    name: ROBERGET
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0276466_PE414916_S3.JPG
+    price: 99
+- model: shop.Product
+  pk: 12
+  fields:
+    name: GREGOR
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460078_PE606471_S3.JPG
+    price: 199
+- model: shop.Product
+  pk: 13
+  fields:
+    name: FEODOR
+    description: swivel chair with armrests
+    image_url: http://www.ikea.com/PIAimages/0271832_PE413619_S3.JPG
+    price: 199
+- model: shop.Product
+  pk: 14
+  fields:
+    name: SKRUVSTA
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0243873_PE383183_S3.JPG
+    price: 149
+- model: shop.Product
+  pk: 15
+  fields:
+    name: FLINTAN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0473860_PE614790_S3.JPG
+    price: 99
+- model: shop.Product
+  pk: 16
+  fields:
+    name: FLINTAN / NOMINELL
+    description: swivel chair with armrests
+    image_url: http://www.ikea.com/PIAimages/0365420_PE549089_S3.JPG
+    price: 129
+- model: shop.Product
+  pk: 17
+  fields:
+    name: VOLMAR
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0108401_PE258153_S3.JPG
+    price: 399
+- model: shop.Product
+  pk: 18
+  fields:
+    name: VOLMAR
+    description: swivel chair with armrests
+    image_url: http://www.ikea.com/PIAimages/0397748_PE570351_S3.JPG
+    price: 349
+- model: shop.Product
+  pk: 19
+  fields:
+    name: VOLMAR
+    description: swivel chair with headrest
+    image_url: http://www.ikea.com/PIAimages/0133017_PE288081_S3.JPG
+    price: 429
+- model: shop.Product
+  pk: 20
+  fields:
+    name: VOLMAR
+    description: swivel chair w headrest/armrests
+    image_url: http://www.ikea.com/PIAimages/0133029_PE288094_S3.JPG
+    price: 479
+- model: shop.Product
+  pk: 21
+  fields:
+    name: MARKUS
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0392583_PE564516_S3.JPG
+    price: 349
+- model: shop.Product
+  pk: 22
+  fields:
+    name: STOLJAN
+    description: conference chair
+    image_url: http://www.ikea.com/PIAimages/0206565_PE360688_S3.JPG
+    price: 49.99
+- model: shop.Product
+  pk: 23
+  fields:
+    name: FJÄLLBERGET
+    description: conference chair
+    image_url: http://www.ikea.com/PIAimages/0188185_PE341135_S3.JPG
+    price: 299
+- model: shop.Product
+  pk: 24
+  fields:
+    name: KOLON
+    description: floor protector
+    image_url: http://www.ikea.com/PIAimages/0292207_PE425129_S3.JPG
+    price: 27.99
+- model: shop.Product
+  pk: 25
+  fields:
+    name: SPORREN
+    description: chair frame, swivel
+    image_url: http://www.ikea.com/PIAimages/0405525_PE570293_S3.JPG
+    price: 25
+- model: shop.Product
+  pk: 26
+  fields:
+    name: NOMINELL
+    description: pair of armrests
+    image_url: http://www.ikea.com/PIAimages/0114562_PE267086_S3.JPG
+    price: 30
+- model: shop.Product
+  pk: 27
+  fields:
+    name: VOLMAR
+    description: headrest
+    image_url: http://www.ikea.com/PIAimages/0115176_PE268393_S3.JPG
+    price: 30
+- model: shop.Product
+  pk: 28
+  fields:
+    name: VOLMAR
+    description: pair of armrests
+    image_url: http://www.ikea.com/PIAimages/0113412_PE265614_S3.JPG
+    price: 50
+- model: shop.Product
+  pk: 29
+  fields:
+    name: VILMAR
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0259513_PE403158_S3.JPG
+    price: 65
+- model: shop.Product
+  pk: 30
+  fields:
+    name: JANINGE
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0325073_PE517376_S3.JPG
+    price: 75
+- model: shop.Product
+  pk: 31
+  fields:
+    name: JANINGE
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0325072_PE517373_S3.JPG
+    price: 75
+- model: shop.Product
+  pk: 32
+  fields:
+    name: JANINGE
+    description: chair with armrests
+    image_url: http://www.ikea.com/PIAimages/0325075_PE520756_S3.JPG
+    price: 85
+- model: shop.Product
+  pk: 33
+  fields:
+    name: JANINGE
+    description: chair with armrests
+    image_url: http://www.ikea.com/PIAimages/0452914_PE601695_S3.JPG
+    price: 85
+- model: shop.Product
+  pk: 34
+  fields:
+    name: FRODE
+    description: folding chair
+    image_url: http://www.ikea.com/PIAimages/0156169_PE315308_S3.JPG
+    price: 40
+- model: shop.Product
+  pk: 35
+  fields:
+    name: FRODE
+    description: folding chair
+    image_url: http://www.ikea.com/PIAimages/0156173_PE315313_S3.JPG
+    price: 40
+- model: shop.Product
+  pk: 36
+  fields:
+    name: FRODE
+    description: folding chair
+    image_url: http://www.ikea.com/PIAimages/0156177_PE315312_S3.JPG
+    price: 40
+- model: shop.Product
+  pk: 37
+  fields:
+    name: KULLABERG
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0410010_PE577747_S3.JPG
+    price: 99
+- model: shop.Product
+  pk: 38
+  fields:
+    name: KULLABERG
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0410020_PE577748_S3.JPG
+    price: 99
+- model: shop.Product
+  pk: 39
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460430_PE606782_S3.JPG
+    price: 209
+- model: shop.Product
+  pk: 40
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460456_PE606802_S3.JPG
+    price: 229
+- model: shop.Product
+  pk: 41
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460475_PE606815_S3.JPG
+    price: 259
+- model: shop.Product
+  pk: 42
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460358_PE606723_S3.JPG
+    price: 179
+- model: shop.Product
+  pk: 43
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460317_PE606692_S3.JPG
+    price: 149
+- model: shop.Product
+  pk: 44
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460404_PE606760_S3.JPG
+    price: 179
+- model: shop.Product
+  pk: 45
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460521_PE606839_S3.JPG
+    price: 229
+- model: shop.Product
+  pk: 46
+  fields:
+    name: LÅNGFJÄLL
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0460504_PE606827_S3.JPG
+    price: 199
+- model: shop.Product
+  pk: 47
+  fields:
+    name: MILLBERGET
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0470187_PE612589_S3.JPG
+    price: 119
+- model: shop.Product
+  pk: 48
+  fields:
+    name: RENBERGET
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0499306_PE630212_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 49
+  fields:
+    name: TOBIAS
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/74048_PE190789_S3.JPG
+    price: 100
+- model: shop.Product
+  pk: 50
+  fields:
+    name: VILMAR
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0125496_PE283076_S3.JPG
+    price: 65
+- model: shop.Product
+  pk: 51
+  fields:
+    name: VILMAR
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0125495_PE283075_S3.JPG
+    price: 50
+- model: shop.Product
+  pk: 52
+  fields:
+    name: VILMAR
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0214682_PE370791_S3.JPG
+    price: 50
+- model: shop.Product
+  pk: 53
+  fields:
+    name: VILMAR
+    description: chair
+    image_url: http://www.ikea.com/PIAimages/0125493_PE283073_S3.JPG
+    price: 50
+- model: shop.Product
+  pk: 54
+  fields:
+    name: VIMUND
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0488115_PE622965_S3.JPG
+    price: 99
+- model: shop.Product
+  pk: 55
+  fields:
+    name: ÖRFJÄLL
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0428702_PE593440_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 56
+  fields:
+    name: ÖRFJÄLL
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0428706_PE583686_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 57
+  fields:
+    name: ÖRFJÄLL
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0428711_PE583687_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 58
+  fields:
+    name: ÖRFJÄLL
+    description: junior chair
+    image_url: http://www.ikea.com/PIAimages/0428696_PE593441_S3.JPG
+    price: 59
+- model: shop.Product
+  pk: 59
+  fields:
+    name: ÖRFJÄLL / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0428768_PE583699_S3.JPG
+    price: 79
+- model: shop.Product
+  pk: 60
+  fields:
+    name: ÖRFJÄLL / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0428770_PE583697_S3.JPG
+    price: 79
+- model: shop.Product
+  pk: 61
+  fields:
+    name: ÖRFJÄLL / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0428769_PE583698_S3.JPG
+    price: 79
+- model: shop.Product
+  pk: 62
+  fields:
+    name: ÖRFJÄLL / SPORREN
+    description: swivel chair
+    image_url: http://www.ikea.com/PIAimages/0428767_PE583696_S3.JPG
+    price: 79
+

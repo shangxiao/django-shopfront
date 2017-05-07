@@ -4,3 +4,4 @@ dj-database-url==0.4.2
 gunicorn==19.7.1
 whitenoise==3.3.0
 djangorestframework==3.6.2
+PyYAML==3.12
