@@ -4,7 +4,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rm -rf frontend/dist/*",
-    "build": "NODE_ENV=production mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack",
+    "build": "NODE_ENV=production mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && webpack -p",
     "heroku-postbuild": "yarn run build",
     "test": "NODE_ENV=testing NODE_PATH=frontend/src mocha --require babel-register --require ignore-styles frontend/test/.setup.js frontend/test/**/*-test.js",
     "lint": "eslint frontend/src"
