@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { getProducts } from 'actions/products';
 
+import './Products.scss';
+
 @connect(state => ({
   products: state.products.products,
 }))
@@ -27,7 +29,7 @@ export default class Products extends Component {
   render() {
     return (
       <div>
-        <h1>Products</h1>
+        <h1 className="Products__heading">Products</h1>
         <ul>
           {this.renderProducts()}
         </ul>

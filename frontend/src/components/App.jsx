@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Products from 'components/Products';
+import Products from 'components/Products/Products';
 
 export default class App extends Component {
   render() {

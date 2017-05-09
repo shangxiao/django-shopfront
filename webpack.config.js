@@ -1,4 +1,10 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const extractSass = new ExtractTextPlugin({
+    filename: '../css/style.css',
+    disable: process.env.NODE_ENV === 'development',
+});
 
 const baseDir = __dirname + '/frontend/';
 
@@ -16,7 +22,17 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
+        test: /\.scss$/,
+        use: extractSass.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader',
+        }),
+      },
     ],
   },
   resolve: {
@@ -35,5 +51,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    extractSass,
   ],
 };
