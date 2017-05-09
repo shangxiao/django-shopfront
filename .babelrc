@@ -3,11 +3,20 @@
     ["env", {"modules": false}],
     "react"
   ],
-  "plugins": ["react-hot-loader/babel"],
+  "plugins": [
+    "transform-decorators-legacy", // must come before transform-class-properties in order to make proptypes work
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "react-hot-loader/babel"
+  ],
   "env": {
     "testing": {
       "presets": ["env", "react"],
-      "plugins": []
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ]
     }
   }
 }

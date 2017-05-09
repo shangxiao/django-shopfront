@@ -27,7 +27,11 @@ module.exports = {
     contentBase: baseDir + 'dist',
     hot: true,
     publicPath: '/js/',
+    proxy: {
+      '/api': 'http://127.0.0.1:8000',
+    },
   },
+  devtool: 'inline-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
