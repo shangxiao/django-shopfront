@@ -19,7 +19,16 @@ export default class ProductDetail extends Component {
     return (
       <div>
         <h1>Product Detail</h1>
-        <div>{this.props.product.name}</div>
+        <div className="ProductDetail__layout">
+          <div className="ProductDetail__image">
+            <img src={this.props.product.image_url} />
+          </div>
+          <div className="ProductDetail__details">
+            <div className="ProductDetail__name">{this.props.product.name}</div>
+            <div className="ProductDetail__description">{this.props.product.description}</div>
+            <div className="ProductDetail__price">${this.props.product.price}</div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,26 @@
+@import "~main.scss";
+
+.ProductDetail__layout {
+  display: flex;
+}
+
+.ProductDetail__image {
+  width: 536px;
+}
+
+.ProductDetail__name {
+  color: $black;
+  font-size: $font-size-beta;
+  font-weight: bold;
+}
+
+.ProductDetail__description {
+  color: $black;
+  font-size: $font-size-delta;
+}
+
+.ProductDetail__price {
+  color: $black;
+  font-size: $font-size-alpha;
+  font-weight: bold;
+}
