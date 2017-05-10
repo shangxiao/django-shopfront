@@ -2,7 +2,7 @@
   "name": "django-shopfront",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "NODE_ENV=development webpack-dev-server",
     "clean": "rm -rf frontend/dist/*",
     "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && NODE_ENV=production webpack -p",
     "heroku-postbuild": "yarn run build",
