@@ -19,3 +19,7 @@ $brand-primary: $ikea-blue;
 
 $icon-font-path: "~bootstrap/fonts/";
 @import "~bootstrap/scss/bootstrap";
+
+.layout {
+  padding-top: 2 * $spacer;
+}

@@ -3,8 +3,9 @@
 import crossroads from 'crossroads';
 import { zipObject } from 'lodash';
 
+import authRoutes from 'apps/auth/routes';
+import productsRoutes from 'apps/products/routes';
 import store from 'store';
-import { ProductDetail, ProductList } from 'apps/products/components';
 
 import Route from './route';
 import history from './history';
@@ -13,8 +14,8 @@ import Link from './components/Link';
 
 
 const routes = {
-  '/products/{id}': ProductDetail,
-  '/': ProductList,
+  ...authRoutes,
+  ...productsRoutes,
 };
 const defaultRoute = '/';
 

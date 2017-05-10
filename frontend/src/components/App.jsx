@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { ProductDetail, ProductList } from 'apps/products/components';
 
+import Menu from './Menu';
+
 @connect(store => ({
   route: store.router.route,
 }))
@@ -13,8 +15,10 @@ export default class App extends Component {
 
     return (
       <div>
-        <h1>Django Shopfront</h1>
-        { pageInstance }
+        <Menu />
+        <div className="container layout">
+          { pageInstance }
+        </div>
       </div>
     );
   }
