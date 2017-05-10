@@ -9,6 +9,8 @@ import { createStore, applyMiddleware } from 'redux';
 import App from 'components/App';
 import rootReducer from 'reducers/index';
 
+import './main.scss';
+
 const store = createStore(
   rootReducer,
   applyMiddleware(thunk)

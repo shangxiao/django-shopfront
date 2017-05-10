@@ -10,6 +10,7 @@
     "lint": "eslint frontend/src"
   },
   "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
     "js-cookie": "2.1.4",
     "prop-types": "15.5.8",
     "react": "15.5.4",
