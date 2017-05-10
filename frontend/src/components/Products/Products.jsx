@@ -8,6 +8,7 @@ import './Products.scss';
 
 @connect(state => ({
   products: state.products.products,
+  isLoading: state.products.fetchingProducts,
 }))
 export default class Products extends Component {
   static propTypes = {
@@ -18,21 +19,44 @@ export default class Products extends Component {
     this.props.dispatch(getProducts());
   }
 
-  renderProducts() {
-    return this.props.products.length === 0
-      ? <li><em>No products listed</em></li>
-      : this.props.products.map(product =>
-        <li key={product.id}>{product.name}</li>
-      );
+  renderCell(product) {
+    return (
+      <div className="col-12 col-sm-6 col-lg-3 Products__cell" key={product.id}>
+        <div>
+          <img src={product.image_url} />
+          <div>
+            <span className="Products__name">{product.name}</span>
+            <span className="Products__description">{product.description}</span>
+          </div>
+          <div className="Products__price">${product.price}</div>
+        </div>
+      </div>
+    )
+  }
+
+  renderProducts(products) {
+    if (this.props.isLoading) {
+      return <div>Loading…</div>;
+    }
+
+    if (products.length === 0) {
+      return <div><em>No products listed</em></div>;
+    }
+
+    return (
+      <div className="row">
+        {products.map(product => this.renderCell(product))}
+      </div>
+    );
   }
 
   render() {
     return (
       <div>
         <h1 className="Products__heading">Products</h1>
-        <ul>
-          {this.renderProducts()}
-        </ul>
+        <div>
+          {this.renderProducts(this.props.products)}
+        </div>
       </div>
     );
   }

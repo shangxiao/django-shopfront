@@ -1,5 +1,24 @@
-$ikea-blue: #08579e;
+@import "~main.scss";
 
 .Products__heading {
-  color: $ikea-blue;
+  color: $brand-primary;
+}
+
+.Products__cell {
+  display: flex;
+  justify-content: center;
+}
+
+.Products__name {
+  font-weight: bold;
+}
+
+.Products__description {
+  color: #666;
+  margin-left: $spacer;
+}
+
+.Products__price {
+  font-size: $font-size-gamma;
+  font-weight: bold;
 }

@@ -1,0 +1,17 @@
+$ikea-blue: #08579e;
+
+$font-size-alpha: 3.75rem;   // 60px
+$font-size-beta:  1.875rem;  // 30px
+$font-size-gamma: 1.125rem;  // 18px
+$font-size-delta: 0.9375rem; // 15px
+$font-size-micro: 0.75rem;   // 12px
+
+// customise bootstrap
+$font-size-base: $font-size-micro;
+
+$spacer: 0.75rem;
+
+$brand-primary: $ikea-blue;
+
+$icon-font-path: "~bootstrap/fonts/";
+@import "~bootstrap/scss/bootstrap";

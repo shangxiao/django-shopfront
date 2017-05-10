@@ -50,7 +50,7 @@ if (process.env.NODE_ENV === 'development') {
   ];
 
   config.devServer = {
-    contentBase: baseDir + 'dist',
+    contentBase: baseDir + 'public',
     hot: true,
     publicPath: '/js/',
     proxy: {
