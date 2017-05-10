@@ -8,7 +8,7 @@ import sinon from 'sinon';
 import thunk from 'redux-thunk';
 
 import App from 'components/App';
-import rootReducer from 'reducers/index';
+import rootReducer from 'rootReducer';
 
 const store = createStore(
   rootReducer,

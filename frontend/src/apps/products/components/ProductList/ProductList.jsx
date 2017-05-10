@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getProducts } from 'actions/products';
+import { Link } from 'apps/router/components';
 
-import './Products.scss';
+import { getProducts } from '../../actions';
+
+import './ProductList.scss';
 
 @connect(state => ({
   products: state.products.products,
@@ -22,14 +24,14 @@ export default class Products extends Component {
   renderCell(product) {
     return (
       <div className="col-12 col-sm-6 col-lg-3 Products__cell" key={product.id}>
-        <div>
+        <Link href={`/products/${product.id}`}>
           <img src={product.image_url} />
           <div>
             <span className="Products__name">{product.name}</span>
             <span className="Products__description">{product.description}</span>
           </div>
           <div className="Products__price">${product.price}</div>
-        </div>
+        </Link>
       </div>
     )
   }

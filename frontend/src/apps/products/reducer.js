@@ -1,11 +1,17 @@
 import {
   REQUEST_PRODUCTS,
   RECEIVE_PRODUCTS,
-} from 'actions/products';
+  REQUEST_PRODUCT,
+  RECEIVE_PRODUCT,
+} from './actions';
 
 const initialState = {
   fetchingProducts: false,
   products: [],
+
+  // a single product
+  fetchingProduct: false,
+  product: {},
 };
 
 export default function products(state = initialState, action) {
@@ -17,11 +23,23 @@ export default function products(state = initialState, action) {
       };
 
     case RECEIVE_PRODUCTS:
-      // do something
       return {
         ...state,
         fetchingProducts: false,
         products: action.data,
+      };
+
+    case REQUEST_PRODUCT:
+      return {
+        ...state,
+        fetchingProduct: true,
+      };
+
+    case RECEIVE_PRODUCT:
+      return {
+        ...state,
+        fetchingProduct: false,
+        product: action.data,
       };
 
     default:
