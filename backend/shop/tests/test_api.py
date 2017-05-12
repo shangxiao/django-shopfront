@@ -56,11 +56,11 @@ class ProductTestCase(TestCase):
 class OrderTestCase(TestCase):
     def setUp(self):
         self.bob = get_user_model().objects.create_user(
-            username='bob',
+            email='bob',
             password='bob',
         )
         alice = get_user_model().objects.create_user(
-            username='alice',
+            email='alice',
             password='alice',
         )
 

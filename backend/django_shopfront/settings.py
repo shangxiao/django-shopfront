@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'shop.apps.ShopConfig',
 
     'django.contrib.admin',
@@ -84,6 +85,10 @@ DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost/django_shopfront', conn_max_age=600),
 }
 
+
+# Authentication & Python Social Auth settings
+AUTH_USER_MODEL = 'accounts.User'
+LOGOUT_REDIRECT_URL = '/'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
