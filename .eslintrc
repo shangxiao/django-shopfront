@@ -6,8 +6,8 @@
     "jsx-a11y",
     "import"
   ],
-  "globals": {
-    "fetch": true,
+  "env": {
+    "browser": true,
   },
   "rules": {
     // configure import rules according to our webpack config

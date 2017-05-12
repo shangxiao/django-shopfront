@@ -55,6 +55,7 @@ if (process.env.NODE_ENV === 'development') {
     publicPath: '/js/',
     proxy: {
       '/api': 'http://127.0.0.1:8000',
+      '/accounts': 'http://127.0.0.1:8000',
     },
     historyApiFallback: true,
   };

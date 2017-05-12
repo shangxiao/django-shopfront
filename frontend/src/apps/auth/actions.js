@@ -1,4 +1,5 @@
 import fetchResource from 'fetchResource';
+import { history } from 'apps/router';
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
@@ -31,19 +32,24 @@ function receiveSignup(data) {
   };
 }
 
-export function login() {
+export function login(loginFormData) {
   return (dispatch) => {
     dispatch(requestLogin());
-    fetchResource('/api/login/')
-      .then(response => response.json())
-      .then(data => dispatch(receiveLogin(data)));
+    fetchResource('/accounts/login/', {
+      method: 'POST',
+      body: loginFormData,
+    })
+      .then(() => {
+        dispatch(receiveLogin());
+        history.push('/');
+      });
   };
 }
 
 export function signup() {
   return (dispatch) => {
     dispatch(requestSignup());
-    fetchResource('/api/signup/')
+    fetchResource('/accounts/signup/')
       .then(response => response.json())
       .then(data => dispatch(receiveSignup(data)));
   };

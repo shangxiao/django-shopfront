@@ -6,6 +6,7 @@ import {
 } from './actions';
 
 const initialState = {
+  isLoggedIn: false,
   isLoggingIn: false,
   isSigningUp: false,
 };
@@ -23,6 +24,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         isLoggingIn: false,
+        isLoggedIn: true,
       };
 
     case REQUEST_SIGNUP:

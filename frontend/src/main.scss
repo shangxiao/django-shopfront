@@ -23,3 +23,8 @@ $icon-font-path: "~bootstrap/fonts/";
 .layout {
   padding-top: 2 * $spacer;
 }
+
+// make faux-links have the same cursor
+.btn-link {
+  cursor: pointer;
+}
