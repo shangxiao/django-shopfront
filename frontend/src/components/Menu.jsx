@@ -36,6 +36,9 @@ export default class Menu extends Component {
     return (
       <ul className="ml-auto nav navbar-nav">
         <li className="nav-item">
+          <Link className="nav-link" href="/cart">Cart</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" href="/profile">
             {this.props.profile.email}
           </Link>

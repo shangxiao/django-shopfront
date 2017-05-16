@@ -4,6 +4,7 @@ import crossroads from 'crossroads';
 import { zipObject } from 'lodash';
 
 import authRoutes from 'apps/auth/routes';
+import cartRoutes from 'apps/cart/routes';
 import productsRoutes from 'apps/products/routes';
 import store from 'store';
 
@@ -15,6 +16,7 @@ import { setLocation, setRoute } from './actions';
 function createRoutes() {
   const routes = {
     ...authRoutes,
+    ...cartRoutes,
     ...productsRoutes,
   };
   const defaultRoute = '/';
