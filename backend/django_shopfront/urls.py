@@ -33,3 +33,10 @@ urlpatterns = [
     url(r'^api/', include(router.urls, namespace='api')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += [
+        # for clientside html5 routing, redirect anything else to index.html
+        # the other option is to maintain a whitelist of urls to serve
+        url(r'^(?!(?:js|css|img|admin|api|accounts))', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
+    ]
