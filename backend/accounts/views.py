@@ -1,5 +1,5 @@
 from django.contrib import auth
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_POST
 
 
@@ -11,6 +11,8 @@ def login(request):
     user = auth.authenticate(request, email=request.POST.get('email'), password=request.POST.get('password'))
     if user is not None and user.is_active:
         auth.login(request, user)
-        return HttpResponse()
+        return JsonResponse(data={
+            'email': user.email,
+        })
 
     return HttpResponse(status=401)

@@ -7,11 +7,15 @@ import getCsrfValue, { CSRF_FORM_NAME } from 'csrf';
 
 @connect(state => ({
   isLoggedIn: state.auth.isLoggedIn,
+  profile: state.auth.profile,
 }))
 export default class Menu extends Component {
 
   static propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
+    profile: PropTypes.shape({
+      email: PropTypes.string,
+    }).isRequired,
   };
 
   static renderAnonymousMenuItems() {
@@ -27,21 +31,28 @@ export default class Menu extends Component {
     );
   }
 
-  static renderLoggedInMenuItems() {
+  renderLoggedInMenuItems() {
     // this should be a good old fashioned POST to server
     return (
       <ul className="ml-auto nav navbar-nav">
-        <form action="/accounts/logout/" method="POST">
-          <input type="hidden" name={CSRF_FORM_NAME} value={getCsrfValue()} />
-          <button className="nav-link btn btn-link">Logout</button>
-        </form>
+        <li className="nav-item">
+          <Link className="nav-link" href="/profile">
+            {this.props.profile.email}
+          </Link>
+        </li>
+        <li className="nav-item">
+          <form action="/accounts/logout/" method="POST">
+            <input type="hidden" name={CSRF_FORM_NAME} value={getCsrfValue()} />
+            <button className="nav-link btn btn-link">Logout</button>
+          </form>
+        </li>
       </ul>
     );
   }
 
   renderMenuItems() {
     return this.props.isLoggedIn
-      ? Menu.renderLoggedInMenuItems()
+      ? this.renderLoggedInMenuItems()
       : Menu.renderAnonymousMenuItems();
   }
 

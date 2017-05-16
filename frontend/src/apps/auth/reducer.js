@@ -7,6 +7,7 @@ import {
 } from './actions';
 
 const initialState = {
+  profile: null,
   isLoggedIn: false,
   isLoggingIn: false,
   loginError: null,
@@ -27,6 +28,7 @@ export default function auth(state = initialState, action) {
         ...state,
         isLoggingIn: false,
         isLoggedIn: true,
+        profile: action.data,
       };
 
     case ERROR_LOGIN:

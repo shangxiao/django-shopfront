@@ -48,8 +48,9 @@ export function login(loginFormData) {
       method: 'POST',
       body: loginFormData,
     })
-      .then(() => {
-        dispatch(receiveLogin());
+      .then(response => response.json())
+      .then((data) => {
+        dispatch(receiveLogin(data));
         history.push('/');
       })
       .catch(error => dispatch(errorLogin(error)));

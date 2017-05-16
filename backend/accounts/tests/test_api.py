@@ -11,7 +11,7 @@ class LoginTestCase(TestCase):
 
     def test_login(self):
         """
-        Test a basic login with a valid user returns 200 and is added to the session
+        Test a basic login with a valid user returns 200 with basic profile information and is added to the session
         """
         response = self.client.post('/accounts/login/', data={
             'email': 'bugs@bunny.com',
@@ -19,6 +19,9 @@ class LoginTestCase(TestCase):
         })
 
         self.assertEqual(response.status_code, 200)
+        self.assertTrue(get_user(response.wsgi_request).is_authenticated)
+        profile = response.json()
+        self.assertEqual(profile['email'], 'bugs@bunny.com')
 
     def test_login_bad_credentials(self):
         """
