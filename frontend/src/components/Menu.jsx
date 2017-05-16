@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Link } from 'apps/router/components';
@@ -9,7 +10,11 @@ import getCsrfValue, { CSRF_FORM_NAME } from 'csrf';
 }))
 export default class Menu extends Component {
 
-  renderAnonymousMenuItems() {
+  static propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+  };
+
+  static renderAnonymousMenuItems() {
     return (
       <ul className="ml-auto nav navbar-nav">
         <li className="nav-item">
@@ -22,7 +27,7 @@ export default class Menu extends Component {
     );
   }
 
-  renderLoggedInMenuItems() {
+  static renderLoggedInMenuItems() {
     // this should be a good old fashioned POST to server
     return (
       <ul className="ml-auto nav navbar-nav">
@@ -36,8 +41,8 @@ export default class Menu extends Component {
 
   renderMenuItems() {
     return this.props.isLoggedIn
-      ? this.renderLoggedInMenuItems()
-      : this.renderAnonymousMenuItems();
+      ? Menu.renderLoggedInMenuItems()
+      : Menu.renderAnonymousMenuItems();
   }
 
   render() {
@@ -45,7 +50,7 @@ export default class Menu extends Component {
       <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
         <div className="container">
           <button className="navbar-toggler navbar-toggler-right" type="button" dataToggle="collapse" dataTarget="#navbarSupportedContent" ariaControls="navbarSupportedContent" ariaExpanded="false" ariaLabel="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" />
           </button>
           <a className="navbar-brand" href="/">Django Shopfront</a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">

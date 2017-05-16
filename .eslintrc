@@ -4,15 +4,19 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import"
+    "import",
   ],
   "env": {
     "browser": true,
+    "mocha": true,
   },
   "rules": {
     // configure import rules according to our webpack config
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "import/extensions": 0,
+
+    // ignore react-redux' dispatch
+    "react/prop-types": ["error", { ignore: ["dispatch"], customValidators: [] }],
   }
 }

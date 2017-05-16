@@ -1,7 +1,7 @@
 import React from 'react';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import { expect } from 'chai';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import sinon from 'sinon';
 

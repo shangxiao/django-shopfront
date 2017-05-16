@@ -12,20 +12,17 @@ import './ProductList.scss';
   products: state.products.products,
   isLoading: state.products.fetchingProducts,
 }))
-export default class Products extends Component {
+export default class ProductList extends Component {
   static propTypes = {
-    products: PropTypes.array.isRequired,
+    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
-  componentDidMount() {
-    this.props.dispatch(getProducts());
-  }
-
-  renderCell(product) {
+  static renderCell(product) {
     return (
       <div className="col-12 col-sm-6 col-lg-3 Products__cell" key={product.id}>
         <Link href={`/products/${product.id}`}>
-          <img src={product.image_url} />
+          <img src={product.image_url} alt={product.name} />
           <div>
             <span className="Products__name">{product.name}</span>
             <span className="Products__description">{product.description}</span>
@@ -33,7 +30,11 @@ export default class Products extends Component {
           <div className="Products__price">${product.price}</div>
         </Link>
       </div>
-    )
+    );
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getProducts());
   }
 
   renderProducts(products) {
@@ -47,7 +48,7 @@ export default class Products extends Component {
 
     return (
       <div className="row">
-        {products.map(product => this.renderCell(product))}
+        {products.map(product => ProductList.renderCell(product))}
       </div>
     );
   }

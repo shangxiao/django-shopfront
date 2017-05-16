@@ -6,8 +6,8 @@
     "clean": "rm -rf frontend/dist/*",
     "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && NODE_ENV=production webpack -p",
     "heroku-postbuild": "yarn run build",
-    "test": "NODE_ENV=testing NODE_PATH=frontend/src mocha --require babel-register --require ignore-styles --require jsdom-global/register frontend/test/**/*-test.js",
-    "lint": "eslint frontend/src"
+    "test": "NODE_ENV=testing NODE_PATH=frontend/src mocha --require babel-register --require ignore-styles --require jsdom-global/register frontend/test/**/*-test.js*",
+    "lint": "eslint --ext .js --ext .jsx frontend/src frontend/test"
   },
   "dependencies": {
     "autobind-decorator": "1.4.0",

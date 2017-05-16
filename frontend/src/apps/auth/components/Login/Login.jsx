@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 import { connect } from 'react-redux';
 
-import { login } from '../../actions';
-
 import { Link } from 'apps/router/components';
+import { login } from '../../actions';
 
 import './Login.scss';
 
@@ -12,13 +12,15 @@ import './Login.scss';
   errorMsg: state.auth.loginErrorMsg,
 }))
 export default class Login extends Component {
-  @autobind
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.dispatch(login(new FormData(e.target)));
+  static propTypes = {
+    errorMsg: PropTypes.string,
+  };
+
+  static defaultProps = {
+    errorMsg: null,
   }
 
-  renderError(msg) {
+  static renderError(msg) {
     return (
       <div className="form-group alert alert-danger">
         { msg }
@@ -26,9 +28,15 @@ export default class Login extends Component {
     );
   }
 
+  @autobind
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.dispatch(login(new FormData(e.target)));
+  }
+
   render() {
     const error = this.props.errorMsg
-      ? this.renderError(this.props.errorMsg)
+      ? Login.renderError(this.props.errorMsg)
       : null;
 
     return (

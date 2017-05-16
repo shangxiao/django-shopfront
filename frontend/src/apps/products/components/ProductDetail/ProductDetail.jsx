@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getProduct } from '../../actions';
@@ -11,6 +12,12 @@ import './ProductDetail.scss';
   isLoading: state.products.fetchingProduct,
 }))
 export default class ProductDetail extends Component {
+  static propTypes = {
+    productId: PropTypes.number.isRequired,
+    product: PropTypes.object.isRequired,  // eslint-disable-line
+    isLoading: PropTypes.bool.isRequired,  // eslint-disable-line
+  };
+
   componentDidMount() {
     this.props.dispatch(getProduct(this.props.productId));
   }
@@ -21,7 +28,7 @@ export default class ProductDetail extends Component {
         <h1>Product Detail</h1>
         <div className="ProductDetail__layout">
           <div className="ProductDetail__image">
-            <img src={this.props.product.image_url} />
+            <img src={this.props.product.image_url} alt={this.props.product.name} />
           </div>
           <div className="ProductDetail__details">
             <div className="ProductDetail__name">{this.props.product.name}</div>

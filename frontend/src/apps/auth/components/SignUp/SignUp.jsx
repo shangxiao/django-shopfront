@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+
 import React, { Component } from 'react';
 
 import { Link } from 'apps/router/components';

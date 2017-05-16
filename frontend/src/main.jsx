@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { AppContainer } from 'react-hot-loader';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
 import App from 'components/App';
 
@@ -12,24 +12,24 @@ import store from './store';
 import './main.scss';
 
 
-const render = Component => {
+const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
         <Component />
       </Provider>
     </AppContainer>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
-}
+};
 
 render(App);
 
 if (module.hot) {
-  module.hot.accept('components/App', () => { render(App) });
+  module.hot.accept('components/App', () => { render(App); });
 
   // accept all the routes
-  for (const routeComponent of new Set(Object.values(routes))) {
+  (new Set(Object.values(routes))).forEach((routeComponent) => {
     module.hot.accept(routeComponent);
-  }
+  });
 }

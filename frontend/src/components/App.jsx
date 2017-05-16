@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import { ProductDetail, ProductList } from 'apps/products/components';
 
 import Menu from './Menu';
 
-@connect(store => ({
+export default connect(store => ({
   route: store.router.route,
-}))
-export default class App extends Component {
-  render() {
-    const Page = this.props.route.page;
-    const pageInstance = Page ? <Page /> : null;
+}))(({ route }) => {
+  const Page = route.page;
+  const pageInstance = Page ? <Page /> : null;
 
-    return (
-      <div>
-        <Menu />
-        <div className="container layout">
-          { pageInstance }
-        </div>
+  return (
+    <div>
+      <Menu />
+      <div className="container layout">
+        { pageInstance }
       </div>
-    );
-  }
-}
+    </div>
+  );
+});

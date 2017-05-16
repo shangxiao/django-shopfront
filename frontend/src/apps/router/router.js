@@ -44,7 +44,7 @@ function createRoutes() {
 
   crossroads.parse(history.location.pathname);
 
-  return routes
+  return routes;
 }
 
 export default createRoutes();
