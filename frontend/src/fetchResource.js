@@ -17,6 +17,26 @@ const POST_DEFAULTS = {
   },
 };
 
+class FetchError extends Error {
+  constructor(response, url, options) {
+    super(`Error fetching ${url}: ${response.statusText} (${response.status})`);
+    this.simpleMsg = response.statusText;
+    this.extra = {
+      response, // contains status & headers... could probably trim down to just those...
+      url, // response.url may be unreliable https://github.com/github/fetch#obtaining-the-response-url
+      options,
+    };
+  }
+}
+
+const checkStatus = (url, options) => (response) => {
+  if (response.ok) {
+    return response;
+  }
+
+  throw new FetchError(response, url, options);
+};
+
 export default function fetchResource(url, suppliedOptions = {}) {
   const isPost = suppliedOptions.body instanceof FormData && suppliedOptions.method === 'POST';
   const options = isPost
@@ -42,5 +62,5 @@ export default function fetchResource(url, suppliedOptions = {}) {
     options.headers[CSRF_HEADER_NAME] = csrftoken;
   }
 
-  return fetch(url, options);
+  return fetch(url, options).then(checkStatus(url, options));
 }
