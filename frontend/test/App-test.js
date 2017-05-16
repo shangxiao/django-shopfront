@@ -23,7 +23,7 @@ describe('<App />', () => {
     fetchMock.reset();
   });
 
-  it('calls render', () => {
+  it('renders a product list', (done) => {
     sinon.spy(App.prototype, 'render');
 
     const listRoute = new Route(ProductList);
@@ -31,10 +31,10 @@ describe('<App />', () => {
 
     const wrapper = mount(<Provider store={store}><App /></Provider>);
     setImmediate(() => {
-      const li = wrapper.find('li');
-      expect(li).to.have.length(1);
-      expect(li.text()).to.equal('molte');
+      const cell = wrapper.find('.Products__cell');
+      expect(cell).to.have.length(1);
+      expect(cell.find('.Products__name').text()).to.equal('molte');
+      done();
     });
   });
-
 });
