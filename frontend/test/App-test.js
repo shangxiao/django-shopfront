@@ -1,19 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import sinon from 'sinon';
-import thunk from 'redux-thunk';
 
 import App from 'components/App';
-import rootReducer from 'rootReducer';
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-);
+import store from 'store';
+import { Route } from 'apps/router';
+import { setRoute } from 'apps/router/actions';
+import { ProductList } from 'apps/products/components';
 
 describe('<App />', () => {
   beforeEach(() => {
@@ -29,6 +25,10 @@ describe('<App />', () => {
 
   it('calls render', () => {
     sinon.spy(App.prototype, 'render');
+
+    const listRoute = new Route(ProductList);
+    store.dispatch(setRoute(listRoute));
+
     const wrapper = mount(<Provider store={store}><App /></Provider>);
     setImmediate(() => {
       const li = wrapper.find('li');

@@ -1,22 +1,11 @@
 import history from './history';
 import Route from './route';
 
-const LOCATION_CHANGE = 'LOCATION_CHANGE';
-const ROUTE_CHANGE = 'ROUTE_CHANGE';
+import {
+  LOCATION_CHANGE,
+  ROUTE_CHANGE,
+} from './actions';
 
-export function setLocation(location) {
-  return {
-    type: LOCATION_CHANGE,
-    location,
-  };
-}
-
-export function setRoute(route) {
-  return {
-    type: ROUTE_CHANGE,
-    route,
-  };
-}
 
 const initialState = {
   location: history.location,
