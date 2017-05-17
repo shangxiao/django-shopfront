@@ -115,3 +115,116 @@ class OrderTestCase(TestCase):
         response = self.client.get('/api/orders/{}/'.format(self.alice_order.id))
 
         self.assertEqual(response.status_code, 404)
+
+
+class CartTestCase(TestCase):
+    def test_cart_empty(self):
+        """
+        Test retrieval of an empty cart
+        """
+        response = self.client.get('/api/cart/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 0)
+
+    def test_cart_with_items(self):
+        """
+        Test retrieval of a cart with a few items added to it
+        """
+        session = self.client.session
+        session['cart'] = {
+            'products': [{
+                'product_id': 10,
+                'quantity': 1,
+            }, {
+                'product_id': 20,
+                'quantity': 2,
+            }]
+        }
+        session.save()
+
+        response = self.client.get('/api/cart/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 2)
+        self.assertEqual(cart['products'][0]['product_id'], 10)
+        self.assertEqual(cart['products'][0]['quantity'], 1)
+        self.assertEqual(cart['products'][1]['product_id'], 20)
+        self.assertEqual(cart['products'][1]['quantity'], 2)
+
+    def test_add_item_to_cart__empty_cart(self):
+        """
+        Test the add item endpoint to an empty: Make sure it saves to the session and returns the updated cart
+        """
+        response = self.client.post('/api/cart/add-item/10/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 1)
+        self.assertEqual(cart['products'][0]['product_id'], 10)
+        self.assertEqual(cart['products'][0]['quantity'], 1)
+        session = self.client.session
+        self.assertEqual(session['cart'], cart)
+
+    def test_add_item_to_cart__existing_item(self):
+        """
+        Test adding to the quantity of and existing item in the cart
+        """
+        session = self.client.session
+        session['cart'] = {
+            'products': [{
+                'product_id': 10,
+                'quantity': 1,
+            }],
+        }
+        session.save()
+
+        response = self.client.post('/api/cart/add-item/10/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 1)
+        self.assertEqual(cart['products'][0]['product_id'], 10)
+        self.assertEqual(cart['products'][0]['quantity'], 2)
+
+    def test_subtract_item_from_cart(self):
+        """
+        Test that subtracting an item will decrease the quantity
+        """
+        session = self.client.session
+        session['cart'] = {
+            'products': [{
+                'product_id': 10,
+                'quantity': 5,
+            }],
+        }
+        session.save()
+
+        response = self.client.post('/api/cart/subtract-item/10/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 1)
+        self.assertEqual(cart['products'][0]['product_id'], 10)
+        self.assertEqual(cart['products'][0]['quantity'], 4)
+
+    def test_subtract_item_from_cart__1_item_left(self):
+        """
+        Test that an item entry is removed from the cart when the quantity is 0 after subtraction
+        """
+        session = self.client.session
+        session['cart'] = {
+            'products': [{
+                'product_id': 10,
+                'quantity': 1,
+            }],
+        }
+        session.save()
+
+        response = self.client.post('/api/cart/subtract-item/10/')
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['products']), 0)

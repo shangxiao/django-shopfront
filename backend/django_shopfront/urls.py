@@ -31,6 +31,7 @@ urlpatterns = [
     url('^(?P<path>(js|css|img)/.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls, namespace='api')),
+    url(r'^api/', include('shop.urls', namespace='cart-api')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ]
 
