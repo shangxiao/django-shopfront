@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import autobind from 'autobind-decorator';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 
 import { Cart } from 'apps/cart/models';
@@ -13,6 +14,11 @@ export default class CartControls extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,  // eslint-disable-line
     cart: PropTypes.instanceOf(Cart).isRequired,
+    size: PropTypes.string,
+  };
+
+  static defaultProps = {
+    size: 'large',
   };
 
   @autobind
@@ -35,9 +41,12 @@ export default class CartControls extends Component {
     const addAriaLabel = `Add the product ${product.name} to the cart`;
     const removeAriaLabel = `Remove the product ${product.name} from the cart`;
     const quantity = this.props.cart.getProductQuantity(product.id);
+    const groupClassNames = classNames('btn-group', {
+      'btn-group-sm': this.props.size === 'small',
+    });
 
     return (
-      <div className="btn-group btn-group-sm" role="group" ariaLabel={groupAriaLabel}>
+      <div className={groupClassNames} role="group" ariaLabel={groupAriaLabel}>
         <button type="button" className="btn btn-secondary" ariaLabel={addAriaLabel} onClick={this.handleAddItem(product)}>+</button>
         <span className="btn btn-secondary">{quantity}</span>
         <button type="button" className="btn btn-secondary" ariaLabel={removeAriaLabel} onClick={this.handleSubtractItem(product)}>-</button>
