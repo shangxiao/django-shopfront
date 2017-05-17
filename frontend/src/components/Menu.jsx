@@ -6,12 +6,14 @@ import { Link } from 'apps/router/components';
 import getCsrfValue, { CSRF_FORM_NAME } from 'csrf';
 
 @connect(state => ({
+  isFetchingProfile: state.auth.isFetchingProfile,
   isLoggedIn: state.auth.isLoggedIn,
   profile: state.auth.profile,
 }))
 export default class Menu extends Component {
 
   static propTypes = {
+    isFetchingProfile: PropTypes.bool.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     profile: PropTypes.shape({
       email: PropTypes.string,
@@ -54,6 +56,12 @@ export default class Menu extends Component {
   }
 
   renderMenuItems() {
+    if (this.props.isFetchingProfile) {
+      // if we're in the process of determining the user, don't show anything
+      // this could should be optimised so the UI doesn't jitter
+      return null;
+    }
+
     return this.props.isLoggedIn
       ? this.renderLoggedInMenuItems()
       : Menu.renderAnonymousMenuItems();

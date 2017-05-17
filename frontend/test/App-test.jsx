@@ -20,6 +20,9 @@ describe('<App />', () => {
     fetchMock.mock('/api/cart/', {
       products: [],
     });
+    fetchMock.mock('/accounts/profile/', {
+      email: 'bugs@bunny.com',
+    });
   });
 
   afterEach(() => {

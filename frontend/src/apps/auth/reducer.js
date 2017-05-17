@@ -1,4 +1,6 @@
 import {
+  RECEIVE_PROFILE,
+  ERROR_PROFILE,
   REQUEST_LOGIN,
   RECEIVE_LOGIN,
   ERROR_LOGIN,
@@ -8,6 +10,7 @@ import {
 
 const initialState = {
   profile: null,
+  isFetchingProfile: true,
   isLoggedIn: false,
   isLoggingIn: false,
   loginError: null,
@@ -16,6 +19,19 @@ const initialState = {
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
+    case RECEIVE_PROFILE:
+      return {
+        ...state,
+        isLoggedIn: true,
+        isFetchingProfile: false,
+        profile: action.data,
+      };
+
+    case ERROR_PROFILE:
+      return {
+        ...state,
+        isFetchingProfile: false,
+      };
 
     case REQUEST_LOGIN:
       return {

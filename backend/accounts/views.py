@@ -3,6 +3,15 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_POST
 
 
+def profile(request):
+    if request.user.is_authenticated:
+        return JsonResponse(data={
+            'email': request.user.email,
+        })
+    else:
+        return HttpResponse(status=401)
+
+
 @require_POST
 def login(request):
     """

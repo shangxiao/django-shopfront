@@ -4,6 +4,30 @@ from django.test import TestCase
 UserModel = get_user_model()
 
 
+class ProfileTestCase(TestCase):
+    def test_profile__logged_in_user(self):
+        """
+        Test that the "whoami" endpoint returns who the user is logged in as with the current session.
+        This is used for page loads.
+        """
+        bugs = UserModel.objects.create_user(email='bugs@bunny.com', password='bugs')
+        self.client.force_login(bugs)
+
+        response = self.client.get('/accounts/profile/')
+
+        self.assertEqual(response.status_code, 200)
+        profile = response.json()
+        self.assertEqual(profile['email'], 'bugs@bunny.com')
+
+    def test_profile__anonymous_user(self):
+        """
+        Test that the "whoami" endpoint returns 401 for anonymous users
+        """
+        response = self.client.get('/accounts/profile/')
+
+        self.assertEqual(response.status_code, 401)
+
+
 class LoginTestCase(TestCase):
 
     def setUp(self):

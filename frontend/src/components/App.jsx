@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Route from 'apps/router/route';
 import { getCart } from 'apps/cart/actions';
+import { getProfile } from 'apps/auth/actions';
 
 import Menu from './Menu';
 
@@ -16,6 +17,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
+    this.props.dispatch(getProfile());
     this.props.dispatch(getCart());
   }
 
