@@ -24,7 +24,10 @@ $icon-font-path: "~bootstrap/fonts/";
   padding-top: 2 * $spacer;
 }
 
-// make faux-links have the same cursor
-.btn-link {
+// Make all buttons, including faux-links have cursor to 
+// indicate the user can interact with this element. This is
+// especially important for flat buttons or .btn-link which
+// should appear the same as a hyperlink.
+button {
   cursor: pointer;
 }

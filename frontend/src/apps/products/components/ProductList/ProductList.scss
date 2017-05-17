@@ -6,6 +6,7 @@
 
 .Products__cell {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   color: $charcoal-dark;
 
@@ -21,6 +22,11 @@
 .Products__description {
   color: #666;
   margin-left: $spacer;
+}
+
+.Products__cell-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .Products__price {

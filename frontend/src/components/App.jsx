@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+
+import Route from 'apps/router/route';
+import { getCart } from 'apps/cart/actions';
 
 import Menu from './Menu';
 
-export default connect(store => ({
+@connect(store => ({
   route: store.router.route,
-}))(({ route }) => {
-  const Page = route.page;
-  const pageInstance = Page ? <Page /> : null;
+}))
+export default class App extends Component {
+  static propTypes = {
+    route: PropTypes.instanceOf(Route).isRequired,
+  };
 
-  return (
-    <div>
-      <Menu />
-      <div className="container layout">
-        { pageInstance }
+  componentDidMount() {
+    this.props.dispatch(getCart());
+  }
+
+  render() {
+    const Page = this.props.route.page;
+    const pageInstance = Page ? <Page /> : null;
+
+    return (
+      <div>
+        <Menu />
+        <div className="container layout">
+          { pageInstance }
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+}

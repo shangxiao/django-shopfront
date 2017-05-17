@@ -17,6 +17,9 @@ describe('<App />', () => {
       id: 1,
       name: 'molte',
     }]);
+    fetchMock.mock('/api/cart/', {
+      products: [],
+    });
   });
 
   afterEach(() => {

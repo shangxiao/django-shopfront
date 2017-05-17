@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
+import { CartControls } from 'apps/cart/components';
 import { Link } from 'apps/router/components';
 
 import { getProducts } from '../../actions';
@@ -27,8 +28,11 @@ export default class ProductList extends Component {
             <span className="Products__name">{product.name}</span>
             <span className="Products__description">{product.description}</span>
           </div>
-          <div className="Products__price">${product.price}</div>
         </Link>
+        <div className="Products__cell-footer">
+          <Link href={`/products/${product.id}`} className="Products__price">${product.price}</Link>
+          <CartControls product={product} />
+        </div>
       </div>
     );
   }
