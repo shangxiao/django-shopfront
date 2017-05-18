@@ -28,7 +28,6 @@ router.register(r'orders', OrderViewSet, base_name='order')
 
 urlpatterns = [
     url('^(?:index\.html)?$', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
-    url('^(?P<path>(js|css|img)/.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls, namespace='api')),
     url(r'^api/', include('shop.urls', namespace='cart-api')),
@@ -39,5 +38,5 @@ if not settings.DEBUG:
     urlpatterns += [
         # for clientside html5 routing, redirect anything else to index.html
         # the other option is to maintain a whitelist of urls to serve
-        url(r'^(?!(?:js|css|img|admin|api|accounts))', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
+        url(r'^(?!(?:admin|api|accounts|static))', ensure_csrf_cookie(serve), {'path': 'index.html', 'document_root': settings.STATIC_ROOT}),
     ]
