@@ -31,3 +31,10 @@ $icon-font-path: "~bootstrap/fonts/";
 button {
   cursor: pointer;
 }
+
+.with-placeholder {
+  width: 250px;
+  height: 250px;
+  background-size: 250px;
+  background-image: url(/img/placeholder.svg);
+}

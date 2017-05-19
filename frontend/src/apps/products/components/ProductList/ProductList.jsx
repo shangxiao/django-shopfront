@@ -23,7 +23,7 @@ export default class ProductList extends Component {
     return (
       <div className="col-12 col-sm-6 col-lg-3 Products__cell" key={product.id}>
         <Link href={`/products/${product.id}`}>
-          <img src={product.image_url} alt={product.name} />
+          <img src={product.image_url} alt={product.name} className="with-placeholder" />
           <div>
             <span className="Products__name">{product.name}</span>
             <span className="Products__description">{product.description}</span>

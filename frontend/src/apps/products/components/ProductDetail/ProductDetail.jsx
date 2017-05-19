@@ -30,7 +30,7 @@ export default class ProductDetail extends Component {
         <h1>Product Detail</h1>
         <div className="ProductDetail__layout">
           <div className="ProductDetail__image">
-            <img src={this.props.product.image_url} alt={this.props.product.name} />
+            <img src={this.props.product.image_url} alt={this.props.product.name} className="with-placeholder" />
           </div>
           <div className="ProductDetail__details">
             <div className="ProductDetail__name">{this.props.product.name}</div>
