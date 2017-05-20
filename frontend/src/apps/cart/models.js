@@ -1,5 +1,8 @@
 /* eslint-disable import/prefer-default-export, camelcase */
 
+import safe from 'safeClass';
+
+@safe
 export class Cart {
   constructor({ products = [] } = {}) {
     this.products = products;
@@ -13,6 +16,7 @@ export class Cart {
   }
 }
 
+@safe
 export class CartProduct {
   constructor({ product_id, quantity = 1 } = {}) {
     this.product_id = product_id;
