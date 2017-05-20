@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Cart as CartModel } from 'apps/cart/models';
+import { Link } from 'apps/router/components';
 import { currency } from 'formats';
 
 import './Cart.scss';
@@ -28,18 +29,19 @@ export default class Cart extends Component {
       return acc + item.quantity * item.product.price;
     }, 0);
     const rows = this.props.cart.items.map((item) => {
+      const productDetailUrl = `/products/${item.product_id}`;
       return (
-        <tr key={item.product_id}>
-          <td>{item.product.name}</td>
-          <td>${item.product.price}</td>
-          <td>{item.quantity}</td>
-          <td>${currency(item.quantity * item.product.price)}</td>
+        <tr key={item.product_id} className="Cart__row">
+          <td><Link href={productDetailUrl}>{item.product.name}</Link></td>
+          <td><Link href={productDetailUrl} tabIndex="-1">${item.product.price}</Link></td>
+          <td><Link href={productDetailUrl} tabIndex="-1">{item.quantity}</Link></td>
+          <td><Link href={productDetailUrl} tabIndex="-1">${currency(item.quantity * item.product.price)}</Link></td>
         </tr>
       );
     });
 
     return (
-      <table className="table table-bordered">
+      <table className="table table-bordered table-hover">
         <thead>
           <tr>
             <th>Item</th>

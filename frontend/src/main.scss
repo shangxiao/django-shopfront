@@ -10,12 +10,10 @@ $font-size-micro: 0.75rem;   // 12px
 
 // customise bootstrap
 $font-size-base: $font-size-micro;
-
-$spacer: 0.75rem;
-
-$link-hover-decoration: none !default;
-
 $brand-primary: $ikea-blue;
+$spacer: 0.75rem;
+$link-hover-decoration: none !default;
+$table-bg-hover: lighten($brand-primary, 65%);
 
 $icon-font-path: "~bootstrap/fonts/";
 @import "~bootstrap/scss/bootstrap";
