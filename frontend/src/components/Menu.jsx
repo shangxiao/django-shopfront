@@ -74,7 +74,7 @@ export default class Menu extends Component {
           <button className="navbar-toggler navbar-toggler-right" type="button" dataToggle="collapse" dataTarget="#navbarSupportedContent" ariaControls="navbarSupportedContent" ariaExpanded="false" ariaLabel="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
-          <a className="navbar-brand" href="/">Django Shopfront</a>
+          <Link className="navbar-brand" href="/">Django Shopfront</Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {this.renderMenuItems()}
           </div>
