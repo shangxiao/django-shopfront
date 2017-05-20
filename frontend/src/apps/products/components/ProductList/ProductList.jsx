@@ -6,6 +6,7 @@ import { CartControls } from 'apps/cart/components';
 import { Link } from 'apps/router/components';
 
 import { getProducts } from '../../actions';
+import { Product } from '../../models';
 
 import './ProductList.scss';
 
@@ -15,7 +16,7 @@ import './ProductList.scss';
 }))
 export default class ProductList extends Component {
   static propTypes = {
-    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    products: PropTypes.arrayOf(PropTypes.instanceOf(Product)).isRequired,
     isLoading: PropTypes.bool.isRequired,
   };
 

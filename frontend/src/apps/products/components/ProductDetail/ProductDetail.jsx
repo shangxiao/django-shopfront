@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { CartControls } from 'apps/cart/components';
 
+import { Product } from '../../models';
 import { getProduct } from '../../actions';
 
 import './ProductDetail.scss';
@@ -16,7 +17,7 @@ import './ProductDetail.scss';
 export default class ProductDetail extends Component {
   static propTypes = {
     productId: PropTypes.string.isRequired,
-    product: PropTypes.object.isRequired,  // eslint-disable-line
+    product: PropTypes.instanceOf(Product).isRequired,
     isLoading: PropTypes.bool.isRequired,  // eslint-disable-line
   };
 
