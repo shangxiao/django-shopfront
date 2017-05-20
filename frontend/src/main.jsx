@@ -9,7 +9,7 @@ import App from 'components/App';
 import routes from './apps/router/router';
 import store from './store';
 
-import './main.scss';
+import './styles/main.scss';
 
 
 const render = (Component) => {
