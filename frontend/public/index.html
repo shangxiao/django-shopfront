@@ -7,8 +7,19 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Django Shopfront</title>
  <link rel="stylesheet" href="/css/style.css" />
+ <style>
+  .skip-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .skip-nav:focus {
+    z-index: 1;
+  } 
+ </style>
 </head>
 <body>
+ <a href="#main-content" class="skip-nav">Skip to content</a>
  <div id="root"></div>
  <script src="/js/main.js"></script>
 </body>

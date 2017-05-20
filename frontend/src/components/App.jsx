@@ -28,7 +28,7 @@ export default class App extends Component {
     return (
       <div>
         <Menu />
-        <div className="container layout">
+        <div className="container layout" id="main-content">
           { pageInstance }
         </div>
       </div>
