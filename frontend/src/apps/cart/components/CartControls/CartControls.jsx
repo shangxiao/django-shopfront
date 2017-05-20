@@ -35,22 +35,39 @@ export default class CartControls extends Component {
     };
   }
 
-  render() {
+  renderNotInCart() {
     const { product } = this.props;
-    const groupAriaLabel = `Add or remove the product ${product.name} from the cart`;
-    const addAriaLabel = `Add the product ${product.name} to the cart`;
-    const removeAriaLabel = `Remove the product ${product.name} from the cart`;
-    const quantity = this.props.cart.getProductQuantity(product.id);
+    const addLabel = `Add the product ${product.name} to the cart`;
+    const buttonClassName = classNames('btn btn-primary', {
+      'btn-sm': this.props.size === 'small',
+    });
+    return (
+      <button type="button" className={buttonClassName} title={addLabel} ariaLabel={addLabel} onClick={this.handleAddItem(product)}>+</button>
+    );
+  }
+
+  renderInCart(quantity) {
+    const { product } = this.props;
+    const groupLabel = `Add or remove the product ${product.name} from the cart`;
+    const addLabel = `Add the product ${product.name} to the cart`;
+    const removeLabel = `Remove the product ${product.name} from the cart`;
     const groupClassNames = classNames('btn-group', {
       'btn-group-sm': this.props.size === 'small',
     });
 
     return (
-      <div className={groupClassNames} role="group" ariaLabel={groupAriaLabel}>
-        <button type="button" className="btn btn-secondary" ariaLabel={addAriaLabel} onClick={this.handleAddItem(product)}>+</button>
+      <div className={groupClassNames} role="group" ariaLabel={groupLabel}>
+        <button type="button" className="btn btn-primary" title={addLabel} ariaLabel={addLabel} onClick={this.handleAddItem(product)}>+</button>
         <span className="btn btn-secondary">{quantity}</span>
-        <button type="button" className="btn btn-secondary" ariaLabel={removeAriaLabel} onClick={this.handleSubtractItem(product)}>-</button>
+        <button type="button" className="btn btn-secondary" title={removeLabel} ariaLabel={removeLabel} onClick={this.handleSubtractItem(product)}>-</button>
       </div>
     );
+  }
+
+  render() {
+    const quantity = this.props.cart.getProductQuantity(this.props.product.id);
+    return quantity === 0
+      ? this.renderNotInCart()
+      : this.renderInCart(quantity);
   }
 }
