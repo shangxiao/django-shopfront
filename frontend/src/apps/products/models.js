@@ -4,7 +4,7 @@ import safe from 'safeClass';
 
 @safe
 export class Product {
-  constructor({ name, description, price, image_url, is_swivel }) {
+  constructor({ name, description, price, image_url, is_swivel } = {}) {
     this.name = name;
     this.description = description;
     this.price = price;

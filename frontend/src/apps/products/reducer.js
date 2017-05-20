@@ -1,3 +1,4 @@
+import { Product } from './models';
 import {
   REQUEST_PRODUCTS,
   RECEIVE_PRODUCTS,
@@ -11,7 +12,7 @@ const initialState = {
 
   // a single product
   fetchingProduct: false,
-  product: {},
+  product: new Product(),
 };
 
 export default function products(state = initialState, action) {
@@ -32,6 +33,7 @@ export default function products(state = initialState, action) {
     case REQUEST_PRODUCT:
       return {
         ...state,
+        product: new Product(),
         fetchingProduct: true,
       };
 
