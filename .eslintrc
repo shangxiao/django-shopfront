@@ -18,5 +18,11 @@
 
     // ignore react-redux' dispatch
     "react/prop-types": ["error", { ignore: ["dispatch"], customValidators: [] }],
+
+    // this should be up the the user's preference
+    "arrow-body-style": 0,
+
+    // just follow PEMDAS, airbnb are considering loosening this: https://github.com/airbnb/javascript/issues/1089
+    "no-mixed-operators": 0,
   }
 }

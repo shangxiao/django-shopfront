@@ -16,6 +16,7 @@
     "crossroads": "0.12.2",
     "history": "4.6.1",
     "js-cookie": "2.1.4",
+    "numeral": "2.0.6",
     "prop-types": "15.5.10",
     "react": "15.5.4",
     "react-dom": "15.5.4",

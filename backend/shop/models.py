@@ -20,45 +20,45 @@ class Order(models.Model):
 
 
 class Cart:
-    def __init__(self, products=None):
-        self.products = products or []
+    def __init__(self, items=None):
+        self.items = items or []
 
     def add_item(self, product_id):
         # we could validate the product id here
         try:
-            product = next(p for p in self.products if p.product_id == product_id)
-            product.quantity += 1
+            item = next(i for i in self.items if i.product_id == product_id)
+            item.quantity += 1
         except StopIteration:
-            self.products.append(CartProduct(product_id=product_id))
+            self.items.append(CartItem(product_id=product_id))
 
     def subtract_item(self, product_id):
         try:
-            product = next(p for p in self.products if p.product_id == product_id)
-            product.quantity -= 1
-            if product.quantity <= 0:
-                self.products.remove(product)
+            item = next(i for i in self.items if i.product_id == product_id)
+            item.quantity -= 1
+            if item.quantity <= 0:
+                self.items.remove(item)
         except StopIteration:
             pass
 
 
 class CartSchema(Schema):
-    products = fields.Nested('CartProductSchema', many=True)
+    items = fields.Nested('CartItemSchema', many=True)
 
     @post_load
     def make_object(self, data):
         return Cart(**data)
 
 
-class CartProduct:
+class CartItem:
     def __init__(self, product_id, quantity=1):
         self.product_id = product_id
         self.quantity = quantity
 
 
-class CartProductSchema(Schema):
+class CartItemSchema(Schema):
     product_id = fields.Integer()
     quantity = fields.Integer()
 
     @post_load
     def make_object(self, data):
-        return CartProduct(**data)
+        return CartItem(**data)

@@ -118,6 +118,18 @@ class OrderTestCase(TestCase):
 
 
 class CartTestCase(TestCase):
+    def setUp(self):
+        self.black_desk_chair = Product.objects.create(
+            name='Svën',
+            description='black desk chair',
+            price='3.00',
+            is_swivel=True,
+        )
+        self.stool = Product.objects.create(
+            name='Stül',
+            price='4.50',
+        )
+
     def test_cart_empty(self):
         """
         Test retrieval of an empty cart
@@ -126,7 +138,7 @@ class CartTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 0)
+        self.assertEqual(len(cart['items']), 0)
 
     def test_cart_with_items(self):
         """
@@ -134,11 +146,11 @@ class CartTestCase(TestCase):
         """
         session = self.client.session
         session['cart'] = {
-            'products': [{
-                'product_id': 10,
+            'items': [{
+                'product_id': self.black_desk_chair.id,
                 'quantity': 1,
             }, {
-                'product_id': 20,
+                'product_id': self.stool.id,
                 'quantity': 2,
             }]
         }
@@ -148,23 +160,25 @@ class CartTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 2)
-        self.assertEqual(cart['products'][0]['product_id'], 10)
-        self.assertEqual(cart['products'][0]['quantity'], 1)
-        self.assertEqual(cart['products'][1]['product_id'], 20)
-        self.assertEqual(cart['products'][1]['quantity'], 2)
+        self.assertEqual(len(cart['items']), 2)
+        self.assertEqual(cart['items'][0]['product_id'], self.black_desk_chair.id)
+        self.assertEqual(cart['items'][0]['product']['name'], 'Svën')
+        self.assertEqual(cart['items'][0]['quantity'], 1)
+        self.assertEqual(cart['items'][1]['product_id'], self.stool.id)
+        self.assertEqual(cart['items'][1]['product']['name'], 'Stül')
+        self.assertEqual(cart['items'][1]['quantity'], 2)
 
     def test_add_item_to_cart__empty_cart(self):
         """
         Test the add item endpoint to an empty: Make sure it saves to the session and returns the updated cart
         """
-        response = self.client.post('/api/cart/add-item/10/')
+        response = self.client.post('/api/cart/add-item/{}/'.format(self.black_desk_chair.id))
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 1)
-        self.assertEqual(cart['products'][0]['product_id'], 10)
-        self.assertEqual(cart['products'][0]['quantity'], 1)
+        self.assertEqual(len(cart['items']), 1)
+        self.assertEqual(cart['items'][0]['product_id'], self.black_desk_chair.id)
+        self.assertEqual(cart['items'][0]['quantity'], 1)
         session = self.client.session
         self.assertEqual(session['cart'], cart)
 
@@ -174,20 +188,20 @@ class CartTestCase(TestCase):
         """
         session = self.client.session
         session['cart'] = {
-            'products': [{
-                'product_id': 10,
+            'items': [{
+                'product_id': self.black_desk_chair.id,
                 'quantity': 1,
             }],
         }
         session.save()
 
-        response = self.client.post('/api/cart/add-item/10/')
+        response = self.client.post('/api/cart/add-item/{}/'.format(self.black_desk_chair.id))
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 1)
-        self.assertEqual(cart['products'][0]['product_id'], 10)
-        self.assertEqual(cart['products'][0]['quantity'], 2)
+        self.assertEqual(len(cart['items']), 1)
+        self.assertEqual(cart['items'][0]['product_id'], self.black_desk_chair.id)
+        self.assertEqual(cart['items'][0]['quantity'], 2)
 
     def test_subtract_item_from_cart(self):
         """
@@ -195,20 +209,20 @@ class CartTestCase(TestCase):
         """
         session = self.client.session
         session['cart'] = {
-            'products': [{
-                'product_id': 10,
+            'items': [{
+                'product_id': self.black_desk_chair.id,
                 'quantity': 5,
             }],
         }
         session.save()
 
-        response = self.client.post('/api/cart/subtract-item/10/')
+        response = self.client.post('/api/cart/subtract-item/{}/'.format(self.black_desk_chair.id))
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 1)
-        self.assertEqual(cart['products'][0]['product_id'], 10)
-        self.assertEqual(cart['products'][0]['quantity'], 4)
+        self.assertEqual(len(cart['items']), 1)
+        self.assertEqual(cart['items'][0]['product_id'], self.black_desk_chair.id)
+        self.assertEqual(cart['items'][0]['quantity'], 4)
 
     def test_subtract_item_from_cart__1_item_left(self):
         """
@@ -216,15 +230,15 @@ class CartTestCase(TestCase):
         """
         session = self.client.session
         session['cart'] = {
-            'products': [{
-                'product_id': 10,
+            'items': [{
+                'product_id': self.black_desk_chair.id,
                 'quantity': 1,
             }],
         }
         session.save()
 
-        response = self.client.post('/api/cart/subtract-item/10/')
+        response = self.client.post('/api/cart/subtract-item/{}/'.format(self.black_desk_chair.id))
 
         self.assertEqual(response.status_code, 200)
         cart = response.json()
-        self.assertEqual(len(cart['products']), 0)
+        self.assertEqual(len(cart['items']), 0)

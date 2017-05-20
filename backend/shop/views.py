@@ -20,8 +20,16 @@ class OrderViewSet(viewsets.ModelViewSet):
         return Order.objects.filter(user=self.request.user)
 
 
+def update_with_product_data(cart):
+    for item in cart['items']:
+        product = Product.objects.get(id=item['product_id'])
+        product_serializer = ProductSerializer(product)
+        item['product'] = product_serializer.data
+    return cart
+
+
 def cart(request):
-    return JsonResponse(data=request.session.get('cart', DEFAULT_CART))
+    return JsonResponse(data=update_with_product_data(request.session.get('cart', DEFAULT_CART)))
 
 
 @require_POST
@@ -31,7 +39,7 @@ def add_item_to_cart(request, product_id):
     cart.add_item(int(product_id))
     json_cart = cart_schema.dump(cart).data
     request.session['cart'] = json_cart
-    return JsonResponse(data=json_cart)
+    return JsonResponse(data=update_with_product_data(json_cart))
 
 
 @require_POST
@@ -41,4 +49,4 @@ def subtract_item_from_cart(request, product_id):
     cart.subtract_item(int(product_id))
     json_cart = cart_schema.dump(cart).data
     request.session['cart'] = json_cart
-    return JsonResponse(data=json_cart)
+    return JsonResponse(data=update_with_product_data(json_cart))
