@@ -11,3 +11,5 @@ test:
     - tox
     - yarn lint
     - yarn test
+  post:
+    - (cd backend && coverage html -d $CIRCLE_ARTIFACTS)

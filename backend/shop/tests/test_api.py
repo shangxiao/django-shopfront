@@ -242,3 +242,13 @@ class CartTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         cart = response.json()
         self.assertEqual(len(cart['items']), 0)
+
+    def test_subtract_item_from_cart__item_doesnt_exist(self):
+        """
+        Attempting to subtract an item from the cart that isn't in there should be a no-op
+        """
+        response = self.client.post('/api/cart/subtract-item/{}/'.format(self.black_desk_chair.id))
+
+        self.assertEqual(response.status_code, 200)
+        cart = response.json()
+        self.assertEqual(len(cart['items']), 0)
