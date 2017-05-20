@@ -31,7 +31,7 @@ export default class ProductList extends Component {
           </div>
         </Link>
         <div className="Products__cell-footer">
-          <Link href={`/products/${product.id}`} className="Products__price">${product.price}</Link>
+          <Link href={`/products/${product.id}`} className="Products__price" tabIndex="-1">${product.price}</Link>
           <CartControls product={product} size="small" />
         </div>
       </div>
