@@ -6,7 +6,7 @@
     "clean": "rm -rf frontend/dist/*",
     "build": "mkdir -p frontend/dist && cp -R frontend/public/* frontend/dist && NODE_ENV=production webpack -p",
     "heroku-postbuild": "yarn run build",
-    "test": "NODE_ENV=testing NODE_PATH=frontend/src mocha --require babel-register --require ignore-styles --require jsdom-global/register frontend/test/**/*-test.js*",
+    "test": "NODE_ENV=testing NODE_PATH=frontend/src istanbul cover _mocha -- --require babel-register --require ignore-styles --require jsdom-global/register frontend/test/**/*-test.js*",
     "lint": "eslint --ext .js --ext .jsx frontend/src frontend/test"
   },
   "dependencies": {
@@ -46,6 +46,7 @@
     "extract-text-webpack-plugin": "2.1.0",
     "fetch-mock": "5.10.1",
     "ignore-styles": "5.0.1",
+    "istanbul": "1.1.0-alpha.1",
     "jsdom": "10.1.0",
     "jsdom-global": "3.0.2",
     "mocha": "3.4.1",
