@@ -13,3 +13,5 @@ test:
     - yarn test
   post:
     - (cd backend && coverage html -d $CIRCLE_ARTIFACTS)
+    - bash <(curl -s https://codecov.io/bash) -cF frontend -f 'frontend/*' -X coveragepy  # it seems to prefer using coverage.py
+    - bash <(curl -s https://codecov.io/bash) -cF backend  # it won't bother looking for other reports if coverage.py detected
