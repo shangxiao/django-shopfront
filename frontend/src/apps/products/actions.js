@@ -1,5 +1,7 @@
 import fetchResource from 'fetchResource';
 
+import { productReviver } from './models';
+
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
 export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';
@@ -35,8 +37,8 @@ export function getProducts() {
   return (dispatch) => {
     dispatch(requestProducts());
     fetchResource('/api/products/')
-      .then(response => response.json())
-      .then(data => dispatch(receiveProducts(data)));
+      .then(response => response.text())
+      .then(text => dispatch(receiveProducts(JSON.parse(text, productReviver))));
   };
 }
 
@@ -44,7 +46,7 @@ export function getProduct(id) {
   return (dispatch) => {
     dispatch(requestProduct());
     fetchResource(`/api/products/${id}`)
-      .then(response => response.json())
-      .then(data => dispatch(receiveProduct(data)));
+      .then(response => response.text())
+      .then(text => dispatch(receiveProduct(JSON.parse(text, productReviver))));
   };
 }

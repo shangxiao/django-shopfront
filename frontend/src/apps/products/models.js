@@ -4,7 +4,8 @@ import safe from 'safeClass';
 
 @safe
 export class Product {
-  constructor({ name, description, price, image_url, is_swivel } = {}) {
+  constructor({ id = null, name, description, price, image_url, is_swivel } = {}) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
@@ -15,7 +16,9 @@ export class Product {
 
 export function productReviver(key, value) {
   if (key === '') {
-    return new Product(value);
+    return value instanceof Array
+      ? value.map(val => new Product(val))
+      : new Product(value);
   }
 
   return value;
