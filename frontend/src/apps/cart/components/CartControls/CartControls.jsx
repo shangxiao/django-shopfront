@@ -42,7 +42,7 @@ export default class CartControls extends Component {
       'btn-sm': this.props.size === 'small',
     });
     return (
-      <button type="button" className={buttonClassName} title={addLabel} ariaLabel={addLabel} onClick={this.handleAddItem(product)}>+</button>
+      <button type="button" className={buttonClassName} title={addLabel} aria-label={addLabel} onClick={this.handleAddItem(product)}>+</button>
     );
   }
 
@@ -56,10 +56,10 @@ export default class CartControls extends Component {
     });
 
     return (
-      <div className={groupClassNames} role="group" ariaLabel={groupLabel}>
-        <button type="button" className="btn btn-primary" title={addLabel} ariaLabel={addLabel} onClick={this.handleAddItem(product)}>+</button>
+      <div className={groupClassNames} role="group" aria-label={groupLabel}>
+        <button type="button" className="btn btn-primary" title={addLabel} aria-label={addLabel} onClick={this.handleAddItem(product)}>+</button>
         <span className="btn btn-secondary">{quantity}</span>
-        <button type="button" className="btn btn-secondary" title={removeLabel} ariaLabel={removeLabel} onClick={this.handleSubtractItem(product)}>-</button>
+        <button type="button" className="btn btn-secondary" title={removeLabel} aria-label={removeLabel} onClick={this.handleSubtractItem(product)}>-</button>
       </div>
     );
   }
